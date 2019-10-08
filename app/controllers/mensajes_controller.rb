@@ -1,5 +1,5 @@
 class MensajesController < ApplicationController
-    before_action :set_mensaje, only: [:show, :destory]
+    before_action :set_mensaje, only: [:show, :destroy]
 
     # POST /mensajes
     def create
@@ -13,7 +13,7 @@ class MensajesController < ApplicationController
 
     # GET /mensajes/:id_usuario/:id_establecimiento
     def read
-        @conversacion = Mensaje.conversacion(params[:id_usuario], params[:id_establecimiento]).per(params[:per_page] || 10)
+        @conversacion = Mensaje.conversacion(params[:id_cliente], params[:id_establecimiento])
         render json: @conversacion
     end
 
@@ -22,7 +22,7 @@ class MensajesController < ApplicationController
         if @mensaje.destroy
             render json: @mensaje, include: []
         else
-            render json: @mensaje.errors, status: 500
+            render json: @mensaje.errors
         end
     end
 
@@ -33,6 +33,6 @@ class MensajesController < ApplicationController
     end
 
     def mensaje_params
-        params.permit(:id_usuario, :id_establecimiento, :mensaje)
+        params.permit(:id_cliente, :id_establecimiento, :mensaje)
     end
 end

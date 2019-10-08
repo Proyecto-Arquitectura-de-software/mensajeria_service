@@ -1,5 +1,5 @@
 class Mensaje < ApplicationRecord
-    def self.conversacion(id_usuario, id_establecimiento)
-        where(id_usuario: id_usuario, id_establecimiento: id_establecimiento).order(created_at: :desc)
+    def self.conversacion(id_cliente, id_establecimiento)
+        where(id_cliente: id_cliente, id_establecimiento: id_establecimiento).order(created_at: :desc)
     end
 end
