@@ -33,6 +33,6 @@ class MensajesController < ApplicationController
     end
 
     def mensaje_params
-        params.permit(:id_cliente, :id_establecimiento, :mensaje)
+        params.permit(:id_cliente, :id_establecimiento, :remitente, :mensaje)
     end
 end
