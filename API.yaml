@@ -1,0 +1,87 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Servicio de mensajeria"
+tags:
+- name: "Mensaje"
+  description: "Informacion del mensaje"
+- name: "User"
+  description: "Información del usuario."
+- name: "Establishment"
+  description: "Información del estableciemiento."
+paths:
+  /conversacion/{id_cliente}/{id_establecimiento}:
+    get:
+      tags:
+      - "Mensaje"
+      summary: "Obtiene la información de la conversacion entre el cliente y el establecimiento."
+      parameters:
+      - in: "path"
+        name: "id_cliente"
+        description: "Id del cliente."
+        required: true
+        type: "integer"
+      - in: "path"
+        name: "id_establecimiento"
+        description: "Id del establecimiento."
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/Mensaje"
+  /mensaje:
+    post:
+      tags:
+      - "Mensaje"
+      summary: "Añade un nuevo mensaje."
+      parameters:
+      - in: "body"
+        name: "body"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/Mensaje"
+      consumes:
+      - "application/json"
+      produces:
+      - ""
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/Mensaje"
+  /mensaje/{id}:
+    delete:
+      tags:
+      - "Mensaje"
+      summary: "Elimina un mensaje"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "path"
+        name: "id"
+        description: "Id del mensaje"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/Mensaje"
+  
+definitions:
+  Mensaje:
+    type: "object"
+    properties:
+      id_cliente:
+        type: "integer"
+      id_establecimiento:
+        type: "integer"
+      remitente:
+        type: "integer"
+      mensaje:
+        type: "string"
