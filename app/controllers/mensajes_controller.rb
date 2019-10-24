@@ -11,7 +11,7 @@ class MensajesController < ApplicationController
         end
     end
 
-    # GET /mensajes/:id_usuario/:id_establecimiento
+    # GET /mensajes/:id_cliente/:id_establecimiento
     def read
         @conversacion = Mensaje.conversacion(params[:id_cliente], params[:id_establecimiento])
         render json: @conversacion
