@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 20191007203650) do
 
   create_table "mensajes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "id_cliente"
-    t.integer  "id_establecimiento"
+    t.string   "id_cliente",         limit: 24
+    t.string   "id_establecimiento", limit: 24
     t.integer  "remitente"
     t.text     "mensaje",            limit: 65535
     t.datetime "created_at",                       null: false
